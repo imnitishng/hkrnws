@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'hkrnws.accounts'
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL="accounts.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
