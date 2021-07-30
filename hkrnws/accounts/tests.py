@@ -7,7 +7,7 @@ from hkrnws.accounts.serializers import UserRegistrationSerializer
 
 
 class TestUserRegistration(TestCase):
-    url = '/users/register/'
+    url = '/api/users/register/'
 
     @classmethod
     def setUpTestData(cls):
@@ -75,3 +75,6 @@ class TestUserRegistration(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
+
+class TestUserLogin(TestCase):
+    url = '/users/login/'
