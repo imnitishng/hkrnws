@@ -1,4 +1,7 @@
+from hkrnws.accounts.models import User
 from django.db import models
+
+from hkrnws.accounts.models import User
 
 
 class CrawlRun(models.Model):
@@ -45,5 +48,5 @@ class Post(models.Model):
         db_index=False, 
         on_delete=models.CASCADE
     )
-
-
+    deleted_by = models.ManyToManyField(User, related_name='post_deleted_by')
+    read_by = models.ManyToManyField(User, related_name='post_read_by')
