@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'hkrnws.accounts'
+    'hkrnws.accounts',
+    'hkrnws.posts'
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,5 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',  
     ],
 }
+
+TIME_ZONE = 'Asia/Kolkata'
