@@ -15,6 +15,11 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
           'password': {'write_only': True},
 		}
 
+    def validate_username(self, value):
+        if len(value) <= 6:
+            raise ValidationError('Username must be greater than 6 charachters.', code=status.HTTP_400_BAD_REQUEST)
+        return value
+
     def	save(self):
         user = User(
             email=self.validated_data['email'],
@@ -25,7 +30,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         password = self.validated_data['password']
         password2 = self.validated_data['password2']
         if password != password2:
-            raise ValidationError({'password': 'Passwords must match.'}, code=status.HTTP_400_BAD_REQUEST)
+            raise ValidationError('Passwords must match.', code=status.HTTP_400_BAD_REQUEST)
         
         user.save()
         return user
