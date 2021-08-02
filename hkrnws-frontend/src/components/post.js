@@ -35,8 +35,8 @@ const Post = ({ post }) => {
     comments = `${post.comments} comments`
 
   let visible
-  visible = { display: visibility ? '' : 'none' }
   visible = { display: post.deleted ? 'none' : '' }
+  visible = { display: visibility ? '' : 'none' }
 
   let postCSSClass
   postCSSClass = (post.read || read) ?
