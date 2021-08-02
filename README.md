@@ -4,7 +4,7 @@
 A [hackernews](https://news.ycombinator.com/) client for fetching top posts and servers them chronologically with user specific features.
 
 
-
+❗ If the project had login issues, please pull the latest changes and run it again.
 
 ## Features
 

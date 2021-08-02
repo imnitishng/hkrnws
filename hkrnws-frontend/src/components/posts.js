@@ -25,7 +25,7 @@ const Posts = () => {
   return (
     <div>
       <div className='w-full h-12 bg-hkrnws-400 text-hkrnws-900 text-2xl sticky top-0 flex items-center justify-between px-5'>
-        hckrnws
+        hkrnws
         <button className='text-sm' onClick={handleLogout}>
           Logout
         </button>

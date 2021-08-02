@@ -14,7 +14,6 @@ def user_registration(request):
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             account = serializer.save()
-            account.save()
             response["email"] = account.email
             response["username"] = account.username
             response["message"] = "User registered successfully"

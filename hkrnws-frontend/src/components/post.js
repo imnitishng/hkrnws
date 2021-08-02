@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { updatePostStatus } from '../services/posts'
 
 const Post = ({ post }) => {
-  const [visibility, setVisibility] = useState(true)
+  const [visibility, setVisibility] = useState(!post.deleted)
   const [read, setRead] = useState(false)
 
   const handleHidePostClick = (e) => {

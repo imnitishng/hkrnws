@@ -43,3 +43,4 @@ class PostActionRequest(serializers.Serializer):
     def validate_action(self, value):
         if value not in ['read', 'hide']:
             raise serializers.ValidationError("Invalid Action. Please use 'read' or 'hide'")
+        return value

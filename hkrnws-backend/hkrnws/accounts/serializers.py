@@ -30,7 +30,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         password = self.validated_data['password']
         password2 = self.validated_data['password2']
         if password != password2:
-            raise ValidationError('Passwords must match.', code=status.HTTP_400_BAD_REQUEST)
-        
+            raise ValidationError({'password': ['Passwords must match.']}, code=status.HTTP_400_BAD_REQUEST)
+
+        user.set_password(password)
         user.save()
         return user
