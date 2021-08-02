@@ -24,7 +24,9 @@ class PostsResponseSerializer(serializers.ModelSerializer):
             "comments": instance.comments ,
             "posted_by": instance.posted_by ,
             "poster_profile_url": instance.poster_profile_url ,
-            "hn_post_url": instance.hn_post_url
+            "hn_post_url": instance.hn_post_url,
+            "read": True if instance.id in self.context['read_ids'] else False,
+            "deleted": True if instance.id in self.context['deleted_ids'] else False
         }
 
 class PostActionRequest(serializers.Serializer):

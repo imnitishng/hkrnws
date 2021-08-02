@@ -16,8 +16,13 @@ def posts_list(request):
         request_token = request.META['HTTP_AUTHORIZATION'].split(' ')[-1]
         user = Token.objects.get(pk=request_token).user
         last_crawl_instance = CrawlRun.objects.latest('created_at')
-        latest_posts = Post.objects.filter(crawl_run=last_crawl_instance)
-        serializer = PostsResponseSerializer(list(latest_posts), many=True)
+        latest_posts = Post.objects.filter(crawl_run=last_crawl_instance).order_by('-timestamp')
+        user_deleted_post_ids = list(user.post_deleted_by.all().values_list('id', flat=True))
+        user_read_post_ids = list(user.post_read_by.all().values_list('id', flat=True))
+        serializer = PostsResponseSerializer(
+            list(latest_posts), 
+            many=True, 
+            context={'deleted_ids': user_deleted_post_ids, 'read_ids': user_read_post_ids})
         return Response(serializer.data)
 
     except Exception as e:
