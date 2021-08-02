@@ -51,7 +51,6 @@ const Login = () => {
           login: ''
         })
         resetForm()
-        console.log(errors)
       }
   }
 
